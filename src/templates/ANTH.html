@@ -46,6 +46,9 @@ document.getElementById('imgContainer').innerHTML += '<div> <img src="#" alt="" 
 var imgs=document.querySelectorAll('img')
 var img=imgs[imgs.length- 1];
 img.src=URL.createObjectURL(file.files[0])
+
+#print(img.src)
+
 img.alt=file.files[0].name; <!--To Add the alt attribute of image with the file name -->
 img.height=300
 img.width=300

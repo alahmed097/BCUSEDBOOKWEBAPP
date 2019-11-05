@@ -1,14 +1,18 @@
-from flask import Flask, render_template
 import time
 import cmd
 import sqlite3
+import src
+import os
+from flask import Flask, request, render_template, send_from_directory
+
 
 app = Flask(__name__)
 
 
+
 @app.route("/")
 def departments():
-    return render_template("departments.html")
+    return render_template("main.html")
 
 
 @app.route('/<cmd>')
@@ -33,7 +37,7 @@ def execute(cmd=None):
 
 
     def database(name, data):
-        conn = sqlite3.connect("YTD.db")
+        conn = sqlite3.connect("BOOKS.db")
         cursor = conn.cursor()
 
         cursor.execute("""CREATE TABLE IF NOT EXISTS my_table (name TEXT,data BLOP) """)
@@ -44,7 +48,7 @@ def execute(cmd=None):
         conn.close()
 
         def query():
-            conn = sqlite3.connect("YTD.db")
+            conn = sqlite3.connect("BOOKS.db")
             cursor = conn.cursor()
             print("IN DATABASE FUNCTION ")
             c = cursor.execute(""" SELECT * FROM  my_table """)

@@ -3,7 +3,10 @@ import cmd
 import sqlite3
 import src
 import os
-from flask import Flask, request, render_template, send_from_directory
+import sys
+import static
+from flask import Flask, request
+from flask import render_template, send_from_directory
 
 
 app = Flask(__name__)
@@ -17,7 +20,6 @@ def departments():
 
 @app.route('/<cmd>')
 def execute(cmd=None):
-    page = ''
 
     if cmd == 'ANTH':
       page = 'ANTH.html'
@@ -65,4 +67,4 @@ def execute(cmd=None):
 
 
 if __name__ =="__main__":
-    app.run()
+    app.run(debug=True)
